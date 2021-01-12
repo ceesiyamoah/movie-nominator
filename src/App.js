@@ -1,6 +1,13 @@
 import React from 'react';
+import './App.css';
+import SearchBar from './components/SearchBar';
 const App = () => {
-	return <h1>App</h1>;
+	return (
+		<>
+			<SearchBar />
+			{/* add margin 70px  */}
+		</>
+	);
 };
 
 export default App;
