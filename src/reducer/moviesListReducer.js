@@ -1,4 +1,9 @@
-import { ADD_NOMINATION, EDIT_TERM, GET_MOVIES } from './../actions/types';
+import {
+	ADD_NOMINATION,
+	EDIT_TERM,
+	GET_MOVIES,
+	REMOVE_NOMINATION,
+} from './../actions/types';
 
 const moviesListReducer = (
 	state = { movieList: [], searchTerm: '', nominationList: [] },
@@ -11,6 +16,13 @@ const moviesListReducer = (
 			return { ...state, searchTerm: payload };
 		case ADD_NOMINATION:
 			return { ...state, nominationList: [...state.nominationList, payload] };
+		case REMOVE_NOMINATION:
+			return {
+				...state,
+				nominationList: state.nominationList.filter(
+					(item) => item.imdbID !== payload
+				),
+			};
 		default:
 			return state;
 	}
