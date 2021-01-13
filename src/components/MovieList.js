@@ -26,7 +26,7 @@ const MovieList = ({ getMovies, searchTerm, movies }) => {
 };
 const mapStateToProps = (state) => ({
 	searchTerm: state.movies.searchTerm,
-	movies: state.movies.list,
+	movies: state.movies.movieList,
 });
 
 const mapDispatchToProps = {
