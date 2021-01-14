@@ -1,23 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import closeButton from './../svg/close.svg';
-import { removeNomination } from './../actions';
-const NominationList = ({ nominations, removeNomination }) => {
+import { removeNomination, clearNominations } from './../actions';
+const NominationList = ({
+	nominations,
+	removeNomination,
+	clearNominations,
+}) => {
 	if (nominations.length > 0) {
 		return (
 			<div className='nominations'>
-				<h3 style={{ textAlign: 'center' }}>Nominees</h3>
+				<h3 style={{ textAlign: 'center' }}>Nominations</h3>
 				{nominations.map((item) => (
 					<div key={item.imdbID} className='list'>
 						<span className='nominationtitle'>{item.Title}</span>
 						<div
 							className='removebutton'
-							onClick={(e) => removeNomination(item.imdbID)}
+							onClick={() => removeNomination(item.imdbID)}
 						>
 							<img src={closeButton} alt='remove' />
 						</div>
 					</div>
 				))}
+				<div className='buttonholder'>
+					<span>Save</span>
+					<span>Create Link</span>
+					<span onClick={clearNominations}>Remove All</span>
+				</div>
 			</div>
 		);
 	} else {
@@ -30,6 +39,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
 	removeNomination,
+	clearNominations,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NominationList);

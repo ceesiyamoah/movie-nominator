@@ -3,8 +3,8 @@ import {
 	ADD_NOMINATION,
 	EDIT_TERM,
 	GET_MOVIES,
-	NOT_LOADED,
 	REMOVE_NOMINATION,
+	CLEAR_NOMINATIONS,
 } from './types';
 
 export const getMovies = () => async (dispatch, getState) => {
@@ -30,3 +30,4 @@ export const removeNomination = (id) => ({
 	type: REMOVE_NOMINATION,
 	payload: id,
 });
+export const clearNominations = () => ({ type: CLEAR_NOMINATIONS });

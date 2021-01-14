@@ -132,6 +132,7 @@ body {
 	background-color: rgb(3, 2, 56);
 	padding: 10px;
 	border-radius: 10px;
+	justify-content: center;
 }
 .nominations > .list {
 	display: flex;
@@ -152,6 +153,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	border-radius: 2px;
+	cursor: pointer;
 }
 .removebutton > img {
 	width: 15px;
@@ -163,4 +165,51 @@ body {
 }
 .removebutton:active {
 	background-color: blue;
+}
+
+.nominations > .removeall {
+	margin-top: auto;
+	display: flex;
+	width: 25%;
+	align-self: center;
+}
+
+.nominations > .removeall:active {
+	background-color: red;
+	color: white;
+}
+
+.buttonholder {
+	margin-top: auto;
+	margin-left: -10px;
+	margin-right: -10px;
+	margin-bottom: -10px;
+
+	height: 40px;
+	display: flex;
+	justify-content: flex-start;
+}
+.buttonholder > span {
+	width: 33.33%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+.buttonholder > span:hover {
+	color: black;
+}
+.buttonholder > span:active {
+	color: white;
+}
+.buttonholder > span:first-child {
+	border-bottom-left-radius: 10px;
+	background-color: rgb(0, 68, 0);
+}
+.buttonholder > span:nth-child(2) {
+	background-color: rgb(80, 28, 128);
+}
+.buttonholder > span:nth-child(3) {
+	background-color: rgb(102, 27, 27);
+	border-bottom-right-radius: 10px;
 }

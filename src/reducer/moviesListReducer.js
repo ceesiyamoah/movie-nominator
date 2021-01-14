@@ -1,5 +1,6 @@
 import {
 	ADD_NOMINATION,
+	CLEAR_NOMINATIONS,
 	EDIT_TERM,
 	GET_MOVIES,
 	REMOVE_NOMINATION,
@@ -23,6 +24,8 @@ const moviesListReducer = (
 					(item) => item.imdbID !== payload
 				),
 			};
+		case CLEAR_NOMINATIONS:
+			return { ...state, nominationList: [] };
 		default:
 			return state;
 	}
