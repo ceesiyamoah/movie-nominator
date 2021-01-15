@@ -25,7 +25,6 @@ const Movie = ({ Title, Poster, Year, addNomination, imdbID, nominated }) => {
 	);
 };
 const mapStateToProps = (state, ownProps) => {
-	console.log(ownProps.imdbID);
 	let nominated = null;
 	state.movies.nominationList.length > 0 &&
 		(nominated = state.movies.nominationList.find(

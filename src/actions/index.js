@@ -5,6 +5,7 @@ import {
 	GET_MOVIES,
 	REMOVE_NOMINATION,
 	CLEAR_NOMINATIONS,
+	RETRIEVE_NOMINATIONS,
 } from './types';
 
 export const getMovies = () => async (dispatch, getState) => {
@@ -20,14 +21,28 @@ export const getMovies = () => async (dispatch, getState) => {
 export const editTerm = (newTerm) => ({ type: EDIT_TERM, payload: newTerm });
 
 export const addNomination = (id) => (dispatch, getState) => {
-	dispatch({
-		type: ADD_NOMINATION,
-		payload: getState().movies.movieList.find((item) => item.imdbID === id),
-	});
+	if (getState().movies.nominationList.length < 5) {
+		dispatch({
+			type: ADD_NOMINATION,
+			payload: getState().movies.movieList.find((item) => item.imdbID === id),
+		});
+	}
 };
 
-export const removeNomination = (id) => ({
-	type: REMOVE_NOMINATION,
-	payload: id,
-});
+export const removeNomination = (id) => (dispatch) => {
+	dispatch({
+		type: REMOVE_NOMINATION,
+		payload: id,
+	});
+};
 export const clearNominations = () => ({ type: CLEAR_NOMINATIONS });
+
+export const saveNominations = () => async (dispatch, getState) => {
+	const nominations = getState().movies.nominationList;
+	localStorage.setItem('nominations', JSON.stringify(nominations));
+};
+
+export const retrieveNominations = () => async (dispatch) => {
+	const nominations = localStorage.getItem('nominations');
+	dispatch({ type: RETRIEVE_NOMINATIONS, payload: JSON.parse(nominations) });
+};

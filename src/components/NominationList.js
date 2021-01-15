@@ -1,12 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import closeButton from './../svg/close.svg';
-import { removeNomination, clearNominations } from './../actions';
+import {
+	removeNomination,
+	clearNominations,
+	saveNominations,
+	retrieveNominations,
+} from './../actions';
 const NominationList = ({
 	nominations,
 	removeNomination,
 	clearNominations,
+	saveNominations,
+	retrieveNominations,
 }) => {
+	React.useEffect(() => {
+		retrieveNominations();
+	}, [retrieveNominations]);
 	if (nominations.length > 0) {
 		return (
 			<div className='nominations'>
@@ -23,8 +33,8 @@ const NominationList = ({
 					</div>
 				))}
 				<div className='buttonholder'>
-					<span>Save</span>
-					<span>Create Link</span>
+					<span onClick={saveNominations}>Save</span>
+
 					<span onClick={clearNominations}>Remove All</span>
 				</div>
 			</div>
@@ -40,6 +50,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
 	removeNomination,
 	clearNominations,
+	saveNominations,
+	retrieveNominations,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NominationList);

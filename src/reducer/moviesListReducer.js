@@ -4,6 +4,7 @@ import {
 	EDIT_TERM,
 	GET_MOVIES,
 	REMOVE_NOMINATION,
+	RETRIEVE_NOMINATIONS,
 } from './../actions/types';
 
 const moviesListReducer = (
@@ -26,6 +27,8 @@ const moviesListReducer = (
 			};
 		case CLEAR_NOMINATIONS:
 			return { ...state, nominationList: [] };
+		case RETRIEVE_NOMINATIONS:
+			return { ...state, nominationList: [...payload] };
 		default:
 			return state;
 	}
