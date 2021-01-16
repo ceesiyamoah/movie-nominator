@@ -71,6 +71,9 @@ body {
 .movie {
 	width: 300px;
 	margin: 20px;
+	transition: all;
+	transition-duration: 0.2s;
+	transition-delay: 50ms;
 }
 .poster {
 	max-width: 300px;
@@ -81,8 +84,8 @@ body {
 	height: 444px;
 }
 
-.poster:hover {
-	opacity: 0.7;
+.movie:hover {
+	transform: scale(1.1);
 }
 
 .poster:hover button {
@@ -101,7 +104,7 @@ body {
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
 	padding: 0 5px;
-	opacity: 0.7;
+	opacity: 0.9;
 }
 .poster > button {
 	position: absolute;
@@ -113,6 +116,7 @@ body {
 	border: none;
 	outline: none;
 	z-index: 1;
+	cursor: pointer;
 }
 .poster > button:active {
 	background-color: blue;
@@ -135,6 +139,7 @@ body {
 	padding: 10px;
 	border-radius: 10px;
 	justify-content: center;
+	cursor: default;
 }
 .nominations > .list {
 	display: flex;
@@ -212,39 +217,51 @@ body {
 .buttonholder > span:nth-child(2) {
 	background-color: rgb(80, 28, 128);
 }
-.buttonholder > span:nth-child(3) {
-	background-color: rgb(102, 27, 27);
-	border-bottom-right-radius: 10px;
-}
 
 .toast {
 	position: fixed;
 	bottom: 50px;
 	right: 50px;
 	background-color: white;
-	min-width: 100px;
-	min-height: 20px;
 
 	text-align: center;
 	padding: 10px;
 	border-radius: 3px;
-	transition: all;
-	transition-duration: 0.5s;
-	transform-origin: top center;
-	transition-timing-function: linear;
+	transition: opacity;
+	transition-duration: 1s;
+
 	transition-delay: 200ms;
-	/* animation: toast infinite 1s normal;
-	overflow-y: hidden; */
 }
-/* @keyframes toast {
-	100% {
-		opacity: 0;
-	}
-	0% {
-		opacity: 1;
-	}
-} */
-div.toast:disabled {
+
+.toast:empty {
 	opacity: 0;
-	background-color: transparent;
+	width: 0;
+	height: 20px;
+	padding: 0;
+	content: none;
+}
+
+.spinner {
+	width: 50px;
+	z-index: 10;
+	height: 50px;
+	border-radius: 20%;
+	margin: auto;
+	background-color: white;
+	animation: spin infinite ease-in 2s;
+	position: absolute;
+	top: 40%;
+	left: 30%;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		transform: translate(450px, 0) rotate(240deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
 }

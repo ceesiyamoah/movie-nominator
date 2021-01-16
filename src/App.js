@@ -8,7 +8,6 @@ const App = () => {
 	return (
 		<>
 			<SearchBar />
-
 			<div className='content'>
 				<div className='main'>
 					<MovieList />
@@ -17,7 +16,7 @@ const App = () => {
 					<NominationList />
 				</div>
 			</div>
-			<Toast text='Noflkmsdfdkl saved' />
+			<Toast />
 		</>
 	);
 };

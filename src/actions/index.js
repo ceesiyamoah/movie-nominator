@@ -40,7 +40,10 @@ export const removeNomination = (id) => (dispatch) => {
 		payload: id,
 	});
 };
-export const clearNominations = () => ({ type: CLEAR_NOMINATIONS });
+export const clearNominations = () => (dispatch) => {
+	dispatch({ type: CLEAR_NOMINATIONS });
+	localStorage.clear();
+};
 
 export const saveNominations = () => async (dispatch, getState) => {
 	const nominations = getState().movies.nominationList;
@@ -49,8 +52,11 @@ export const saveNominations = () => async (dispatch, getState) => {
 };
 
 export const retrieveNominations = () => async (dispatch) => {
-	const nominations = localStorage.getItem('nominations');
-	dispatch({ type: RETRIEVE_NOMINATIONS, payload: JSON.parse(nominations) });
+	const nominations = JSON.parse(localStorage.getItem('nominations'));
+
+	console.log(nominations);
+	if (nominations)
+		dispatch({ type: RETRIEVE_NOMINATIONS, payload: nominations });
 };
 
 export const clearNotification = () => ({ type: CLEAR_NOTIFICATION });

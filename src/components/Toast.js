@@ -3,18 +3,14 @@ import { connect } from 'react-redux';
 import { clearNotification } from './../actions/index';
 const Toast = ({ text, clearNotification }) => {
 	React.useEffect(() => {
-		if (text) {
+		if (text !== '') {
 			setTimeout(() => {
 				clearNotification();
 			}, 3000);
 		}
 	}, [clearNotification, text]);
 
-	return (
-		<div className='toast' disabled={text === '' ? 'disabled' : ''}>
-			{text}
-		</div>
-	);
+	return <div className='toast'>{text}</div>;
 };
 const mapStateToProps = (state) => ({
 	text: state.movies.notification,
