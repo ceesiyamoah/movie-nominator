@@ -146,6 +146,7 @@ body {
 
 .nominationtitle {
 	font-size: medium;
+	padding-left: 2px;
 }
 
 .removebutton {
@@ -214,4 +215,36 @@ body {
 .buttonholder > span:nth-child(3) {
 	background-color: rgb(102, 27, 27);
 	border-bottom-right-radius: 10px;
+}
+
+.toast {
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+	background-color: white;
+	min-width: 100px;
+	min-height: 20px;
+
+	text-align: center;
+	padding: 10px;
+	border-radius: 3px;
+	transition: all;
+	transition-duration: 0.5s;
+	transform-origin: top center;
+	transition-timing-function: linear;
+	transition-delay: 200ms;
+	/* animation: toast infinite 1s normal;
+	overflow-y: hidden; */
+}
+/* @keyframes toast {
+	100% {
+		opacity: 0;
+	}
+	0% {
+		opacity: 1;
+	}
+} */
+div.toast:disabled {
+	opacity: 0;
+	background-color: transparent;
 }
