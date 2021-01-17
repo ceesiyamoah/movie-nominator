@@ -5,11 +5,7 @@ import reduxThunk from 'redux-thunk';
 import App from './App';
 import RootReducer from './reducer/index';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
-	RootReducer,
-	composeEnhancers(applyMiddleware(reduxThunk))
-);
+const store = createStore(RootReducer, compose(applyMiddleware(reduxThunk)));
 
 ReactDOM.render(
 	<Provider store={store}>
