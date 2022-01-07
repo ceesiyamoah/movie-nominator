@@ -13,7 +13,7 @@ import {
 
 export const getMovies = () => async (dispatch, getState) => {
 	const { data } = await axios.get(
-		`http://www.omdbapi.com/?i=tt3896198&apikey=c3f64ba6=${
+		`http://www.omdbapi.com/?apikey=c3f64ba6&s=${
 			getState().movies.searchTerm
 		}&type=movie`
 	);
